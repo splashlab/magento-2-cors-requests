@@ -25,6 +25,7 @@ Edit `composer.json`
 ```
 
 ```
+composer install
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 ```
@@ -70,8 +71,6 @@ You can also manage these CORS headers with Apache and Nginx rules, instead of u
 But I created this extension to allow you to configure the Origin domain the Admin Configuration, and to avoid having to create and manage special server configuration.
 
 ## CORS Cross-Domain Request References
-
-Not only can you create unlimited sliders but Product Slider module also allows placing the sliders like content or sidebar additional at the top or bottom of any page on your website flexibly. The options you can put the sliders are:
 
 - https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
