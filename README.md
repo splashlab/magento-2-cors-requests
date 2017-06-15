@@ -8,8 +8,23 @@ This can be used to allow AJAX and other requests to the Magento 2 REST API from
 
 ### 1. via composer
 
+Edit `composer.json`
+
 ```
-composer require splashlab/magento-2-cors-requests
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/splashlab/magento-2-cors-requests"
+        }
+    ],
+    "require": {
+        "splashlab/magento-2-cors-requests": "dev-master"
+    }
+}
+```
+
+```
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 ```
@@ -24,6 +39,12 @@ Paste into `app/code/SplashLab/CorsRequests` directory
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 ```
+
+### 3. Update Origin URL
+
+In `Stores -> Configuration`, go to `General -> Web -> CORS Requests Configuration`.
+
+Then edit the the `CORS Origin Url` field to the domain you want to enable cross-domain requests from. (i.e. http://example.com)
 
 ## How does it work?
 
@@ -57,6 +78,7 @@ Not only can you create unlimited sliders but Product Slider module also allows 
 - https://www.html5rocks.com/en/tutorials/cors/
 - https://stackoverflow.com/questions/29954037/how-to-disable-options-request
 - https://stackoverflow.com/questions/12320467/jquery-cors-content-type-options
+- https://github.com/magento/magento2/issues/8399
 
 
 
