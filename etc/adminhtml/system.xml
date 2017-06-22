@@ -12,7 +12,6 @@
                     <label>CORS Origin Url</label>
                     <comment>*, or fully qualified URLs without trailing '/' (slash) (e.g. http://example.com)
                     </comment>
-                    <validate>validate-url</validate>
                 </field>
                 <field id="allow_credentials" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
                        showInStore="1">
