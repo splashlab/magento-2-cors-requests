@@ -47,7 +47,7 @@ class CorsHeadersPlugin
      */
     protected function getOriginUrl()
     {
-        return $this->scopeConfig->getValue('corsRequests/general/origin_url',
+        return $this->scopeConfig->getValue('web/corsRequests/origin_url',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
@@ -57,7 +57,7 @@ class CorsHeadersPlugin
      */
     protected function getAllowCredentials()
     {
-        return (bool) $this->scopeConfig->getValue('corsRequests/general/allow_credentials',
+        return (bool) $this->scopeConfig->getValue('web/corsRequests/allow_credentials',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 

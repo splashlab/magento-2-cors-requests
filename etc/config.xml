@@ -2,11 +2,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <corsRequests>
-            <general>
+        <web>
+            <corsRequests>
                 <origin_url>*</origin_url>
                 <allow_credentials>0</allow_credentials>
-            </general>
-        </corsRequests>
+            </corsRequests>
+        </web>
     </default>
 </config>
