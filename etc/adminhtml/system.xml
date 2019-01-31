@@ -19,6 +19,12 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Enables Access-Control-Allow-Credentials response header to pass cookies</comment>
                 </field>
+                <field id="enable_amp" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>CORS Requests for AMP</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables AMP-Access-Control-Allow-Source-Origin response header for AMP CORS requests</comment>
+                </field>
             </group>
         </section>
     </system>

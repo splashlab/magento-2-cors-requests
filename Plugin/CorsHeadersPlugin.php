@@ -62,6 +62,16 @@ class CorsHeadersPlugin
     }
 
     /**
+     * Get the origin domain the requests are going to come from
+     * @return string
+     */
+    protected function getEnableAmp()
+    {
+        return (bool) $this->scopeConfig->getValue('web/corsRequests/enable_amp',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Triggers before original dispatch
      * This method triggers before original \Magento\Webapi\Controller\Rest::dispatch and set version
      * from request params to VersionManager instance
@@ -78,6 +88,9 @@ class CorsHeadersPlugin
             $this->response->setHeader('Access-Control-Allow-Origin', rtrim($originUrl,"/"), true);
             if ($this->getAllowCredentials()) {
                 $this->response->setHeader('Access-Control-Allow-Credentials', 'true', true);
+            }
+            if ($this->getEnableAmp()) {
+                $this->response->setHeader('AMP-Access-Control-Allow-Source-Origin', rtrim($originUrl,"/"), true);
             }
         }
     }

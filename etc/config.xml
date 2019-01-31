@@ -6,6 +6,7 @@
             <corsRequests>
                 <origin_url>*</origin_url>
                 <allow_credentials>0</allow_credentials>
+                <enable_amp>0</enable_amp>
             </corsRequests>
         </web>
     </default>
