@@ -3,7 +3,7 @@
     "description": "Enabling cross-origin resource sharing (CORS) requests to Magento 2 API from configured Origin domain",
     "homepage": "https://github.com/splashlab/magento-2-cors-requests",
     "type": "magento2-module",
-    "version": "100.3.3"
+    "version": "100.3.3",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
