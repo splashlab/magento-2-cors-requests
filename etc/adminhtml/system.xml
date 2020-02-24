@@ -27,8 +27,8 @@
                 </field>
                 <field id="max_age" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
                        showInStore="1">
-                    <label>CORS Control Max age</label>
-                    <comment>Enables Access-Control-Max-Age response header for AMP CORS requests (max age in seconds)</comment>
+                    <label>CORS Request Max Age</label>
+                    <comment>Enables Access-Control-Max-Age response header for CORS requests (max age in seconds)</comment>
                 </field>
             </group>
         </section>
