@@ -72,6 +72,16 @@ class CorsHeadersPlugin
     }
 
     /**
+     * Get the Access-Control-Max-Age
+     * @return string
+     */
+    protected function getMaxAge()
+    {
+        return (int) $this->scopeConfig->getValue('web/corsRequests/max_age',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
      * Triggers before original dispatch
      * This method triggers before original \Magento\Webapi\Controller\Rest::dispatch and set version
      * from request params to VersionManager instance
@@ -91,6 +101,9 @@ class CorsHeadersPlugin
             }
             if ($this->getEnableAmp()) {
                 $this->response->setHeader('AMP-Access-Control-Allow-Source-Origin', rtrim($originUrl,"/"), true);
+            }
+            if ((int)$this->getMaxAge() > 0) {
+                $this->response->setHeader('Access-Control-Max-Age', $this->getMaxAge(), true);
             }
         }
     }
