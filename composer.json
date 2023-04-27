@@ -13,7 +13,7 @@
         "source": "https://github.com/splashlab/magento-2-cors-requests"
     },
     "require": {
-        "php": "~7.1.3||~7.2.0||~7.3.0||~7.4.0||~8.1.0",
+        "php": "~7.1.3||~7.2.0||~7.3.0||~7.4.0||~8.1.0||~8.2.0",
         "magento/framework": "*"
     },
     "autoload": {
