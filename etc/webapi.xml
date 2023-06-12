@@ -9,7 +9,7 @@
 
     <!-- Example: curl http://127.0.0.1/index.php/rest/V1/cors/check/ -->
     <route url="/V1/cors/check" method="GET">
-        <service class="SplashLab\CorsRequests\Api\CorsCheckInterface" method="check"/>
+        <service class="Creatuity\CorsRequests\Api\CorsCheckInterface" method="check"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>

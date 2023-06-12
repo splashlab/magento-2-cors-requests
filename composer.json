@@ -1,7 +1,7 @@
 {
-    "name": "lpouwelse/magento-2-cors-requests",
+    "name": "creatuity/magento-2-cors-requests",
     "description": "Enabling cross-origin resource sharing (CORS) requests to Magento 2 API from configured Origin domain",
-    "homepage": "https://github.com/splashlab/magento-2-cors-requests",
+    "homepage": "https://github.com/creatuity/magento-2-cors-requests",
     "type": "magento2-module",
     "version": "100.0.7",
     "license": [
@@ -9,11 +9,11 @@
         "AFL-3.0"
     ],
     "support": {
-        "issues": "https://github.com/splashlab/magento-2-cors-requests/issues",
-        "source": "https://github.com/splashlab/magento-2-cors-requests"
+        "issues": "https://github.com/creatuity/magento-2-cors-requests/issues",
+        "source": "https://github.com/creatuity/magento-2-cors-requests"
     },
     "require": {
-        "php": "~7.1.3||~7.2.0||~7.3.0||~7.4.0||~8.1.0",
+        "php": "^8.2",
         "magento/framework": "*"
     },
     "autoload": {
@@ -21,7 +21,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "SplashLab\\CorsRequests\\": ""
+            "Creatuity\\CorsRequests\\": ""
         }
     }
 }

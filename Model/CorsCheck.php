@@ -3,35 +3,34 @@
  * @copyright  Copyright 2017 SplashLab
  */
 
-namespace SplashLab\CorsRequests\Model;
+declare(strict_types=1);
 
-use SplashLab\CorsRequests\Api\CorsCheckInterface;
+namespace Creatuity\CorsRequests\Model;
+
+use Magento\Framework\Webapi\Rest\Request;
+use Magento\Framework\Webapi\Rest\Response;
+use Creatuity\CorsRequests\Api\CorsCheckInterface;
 
 /**
  * Class CorsCheck
- * @package SplashLab\CorsRequests\Model
+ *
+ * @package Creatuity\CorsRequests\Model
  */
 class CorsCheck implements CorsCheckInterface
 {
-
     /**
      * Initialize dependencies.
-     *
-     * @param \Magento\Framework\Webapi\Rest\Response $response
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface scopeConfig
      */
     public function __construct(
-        \Magento\Framework\Webapi\Rest\Response $response,
-        \Magento\Framework\Webapi\Rest\Request $request
+        private readonly Response $response,
+        private readonly Request $request
     ) {
-        $this->response = $response;
-        $this->request = $request;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function check()
+    public function check(): string
     {
         // respond to OPTIONS request with appropriate headers
         $this->response->setHeader('Access-Control-Allow-Methods', $this->request->getHeader('Access-Control-Request-Method'), true);

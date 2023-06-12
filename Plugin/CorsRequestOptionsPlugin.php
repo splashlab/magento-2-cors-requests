@@ -1,10 +1,11 @@
 <?php
-
 /**
  * @copyright  Copyright 2017 SplashLab
  */
 
-namespace SplashLab\CorsRequests\Plugin;
+declare(strict_types=1);
+
+namespace Creatuity\CorsRequests\Plugin;
 
 use Magento\Framework\Webapi\Request;
 use Magento\Framework\Exception\InputException;
@@ -12,7 +13,7 @@ use Magento\Framework\Exception\InputException;
 /**
  * Class CorsRequestOptionsPlugin
  *
- * @package SplashLab\CorsRequests
+ * @package Creatuity\CorsRequests
  */
 class CorsRequestOptionsPlugin
 {
@@ -22,7 +23,7 @@ class CorsRequestOptionsPlugin
      * Allow Options requests from jQuery AJAX
      *
      * @param Request $subject
-     * @return void
+     * @return string
      * @throws InputException
      */
     public function aroundGetHttpMethod(
@@ -31,6 +32,7 @@ class CorsRequestOptionsPlugin
         if (!$subject->isGet() && !$subject->isPost() && !$subject->isPut() && !$subject->isDelete() && !$subject->isOptions()) {
             throw new InputException(__('Request method is invalid.'));
         }
+
         return $subject->getMethod();
     }
 

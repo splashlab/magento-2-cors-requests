@@ -5,6 +5,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'SplashLab_CorsRequests',
+    'Creatuity_CorsRequests',
     __DIR__
 );

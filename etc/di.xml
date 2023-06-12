@@ -7,16 +7,16 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-    <preference for="SplashLab\CorsRequests\Api\CorsCheckInterface" type="SplashLab\CorsRequests\Model\CorsCheck"/>
+    <preference for="Creatuity\CorsRequests\Api\CorsCheckInterface" type="Creatuity\CorsRequests\Model\CorsCheck"/>
 
     <type name="Magento\Webapi\Controller\Rest">
-        <plugin name="cors_headers" type="SplashLab\CorsRequests\Plugin\CorsHeadersPlugin" />
+        <plugin name="cors_headers" type="Creatuity\CorsRequests\Plugin\CorsHeadersPlugin" />
     </type>
     <type name="Magento\Framework\Webapi\Rest\Request">
-        <plugin name="cors_request_options" type="SplashLab\CorsRequests\Plugin\CorsRequestOptionsPlugin" />
+        <plugin name="cors_request_options" type="Creatuity\CorsRequests\Plugin\CorsRequestOptionsPlugin" />
     </type>
     <type name="Magento\Webapi\Controller\Rest\Router">
-        <plugin name="cors_request_match" type="SplashLab\CorsRequests\Plugin\CorsRequestMatchPlugin" />
+        <plugin name="cors_request_match" type="Creatuity\CorsRequests\Plugin\CorsRequestMatchPlugin" />
     </type>
 
 </config>

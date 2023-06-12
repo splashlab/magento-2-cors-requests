@@ -1,84 +1,77 @@
 <?php
-
 /**
  * @copyright  Copyright 2017 SplashLab
  */
 
-namespace SplashLab\CorsRequests\Plugin;
+declare(strict_types=1);
 
+namespace Creatuity\CorsRequests\Plugin;
+
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\FrontControllerInterface;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Webapi\Rest\Response;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class CorsHeadersPlugin
  *
- * @package SplashLab\CorsRequests
+ * @package Creatuity\CorsRequests
  */
 class CorsHeadersPlugin
 {
-
-    /**
-     * @var \Magento\Framework\Webapi\Rest\Response
-     */
-    private $response;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    private $scopeConfig;
+    private const XML_CORS_ORIGIN_URL = 'web/corsRequests/origin_url';
+    private const XML_CORS_ALLOW_CREDENTIALS = 'web/corsRequests/allow_credentials';
+    private const XML_CORS_ENABLE_AMP = 'web/corsRequests/enable_amp';
+    private const XML_CORS_MAX_AGE = 'web/corsRequests/max_age';
 
     /**
      * Initialize dependencies.
-     *
-     * @param \Magento\Framework\Webapi\Rest\Response $response
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface scopeConfig
      */
     public function __construct(
-        \Magento\Framework\Webapi\Rest\Response $response,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+        private readonly Response $response,
+        private readonly ScopeConfigInterface $scopeConfig
     ) {
-        $this->response = $response;
-        $this->scopeConfig = $scopeConfig;
     }
 
     /**
      * Get the origin domain the requests are going to come from
      * @return string
      */
-    protected function getOriginUrl()
+    protected function getOriginUrl(): string
     {
-        return $this->scopeConfig->getValue('web/corsRequests/origin_url',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return (string)$this->scopeConfig->getValue(self::XML_CORS_ORIGIN_URL,
+            ScopeInterface::SCOPE_STORE);
     }
 
     /**
      * Get the origin domain the requests are going to come from
-     * @return string
+     * @return bool
      */
-    protected function getAllowCredentials()
+    protected function getAllowCredentials(): bool
     {
-        return (bool) $this->scopeConfig->getValue('web/corsRequests/allow_credentials',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return (bool)$this->scopeConfig->getValue(self::XML_CORS_ALLOW_CREDENTIALS,
+            ScopeInterface::SCOPE_STORE);
     }
 
     /**
      * Get the origin domain the requests are going to come from
-     * @return string
+     * @return bool
      */
     protected function getEnableAmp()
     {
-        return (bool) $this->scopeConfig->getValue('web/corsRequests/enable_amp',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return (bool)$this->scopeConfig->getValue(self::XML_CORS_ENABLE_AMP,
+            ScopeInterface::SCOPE_STORE);
     }
 
     /**
      * Get the Access-Control-Max-Age
-     * @return string
+     * @return int
      */
-    protected function getMaxAge()
+    protected function getMaxAge(): int
     {
-        return (int) $this->scopeConfig->getValue('web/corsRequests/max_age',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return (int)$this->scopeConfig->getValue(self::XML_CORS_MAX_AGE,
+            ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -93,16 +86,17 @@ class CorsHeadersPlugin
     public function beforeDispatch(
         FrontControllerInterface $subject,
         RequestInterface $request
-    ) {
+    ): void {
         if ($originUrl = $this->getOriginUrl()) {
-            $this->response->setHeader('Access-Control-Allow-Origin', rtrim($originUrl,"/"), true);
+            $this->response->setHeader('Access-Control-Allow-Origin', rtrim($originUrl,'/'), true);
+
             if ($this->getAllowCredentials()) {
                 $this->response->setHeader('Access-Control-Allow-Credentials', 'true', true);
             }
             if ($this->getEnableAmp()) {
-                $this->response->setHeader('AMP-Access-Control-Allow-Source-Origin', rtrim($originUrl,"/"), true);
+                $this->response->setHeader('AMP-Access-Control-Allow-Source-Origin', rtrim($originUrl,'/'), true);
             }
-            if ((int)$this->getMaxAge() > 0) {
+            if ($this->getMaxAge() > 0) {
                 $this->response->setHeader('Access-Control-Max-Age', $this->getMaxAge(), true);
             }
         }

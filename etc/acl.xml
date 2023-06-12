@@ -7,7 +7,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="SplashLab_CorsRequests::config" title="CORS Request Configuration" sortOrder="50"/>
+                            <resource id="Creatuity_CorsRequests::config" title="CORS Request Configuration" sortOrder="50"/>
                         </resource>
                     </resource>
                 </resource>
